@@ -1,0 +1,240 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>The Columban 2024 </title>
+  <meta name="viewport" content="width = device-width, minimum-scale=1, maximum-scale=1, user-scalable = no" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <!-- External JS dependencies -->
+  <script type="text/javascript" src="assets/js/jquery-2.0.3.min.js"></script>
+  <script type="text/javascript" src="assets/js/underscore-min.js"></script>
+  <script type="text/javascript" src="assets/js/backbone-min.js"></script>
+
+  <!-- Turn.js UI Kit -->
+  <script type="text/javascript" src="assets/js/turn.min.js"></script>
+
+  <!-- App dependencies -->
+  <script type="text/javascript" src="assets/js/app.js"></script>
+
+
+  <!-- External CSS dependencies -->
+  <link type="text/css" rel="stylesheet" href="assets/css/font-awesome.min.css">
+  </link>
+  <link rel="icon" type="image/png" href="assets/img/favicon.png?a" />
+  <link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
+
+  <!-- App CSS dependencies -->
+  <link type="text/css" rel="stylesheet" href="assets/css/main.css">
+  </link>
+
+  <style type="text/css">
+
+  </style>
+</head>
+
+<body>
+  <div class="catalog-app"
+    style="background-image: url('assets/img/School.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+    <div id="viewer">
+      <div id="flipbook" class="ui-flipbook">
+
+        <div
+          style="position: relative; background-color: black; display: flex; align-items: center; justify-content: center;">
+          <video id="coverPageVideo" autoplay muted loop
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+            <source src="assets\video\Cover_Page.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <video id="principal-video-1" autoplay muted
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+            <source src="assets\video\Principal's_message1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <img id="play-button" style="position: absolute; z-index: 1; width: 2.5em; top: 6em; right: 3em;"
+            src="assets/img/play_btn.png">
+        </div>
+
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <video id="principal-video-2" autoplay muted
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+            <source src="assets\video\Principal's_message2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="display: flex; justify-content: center; align-items: center;">
+        </div>
+
+        <div style="display: flex; justify-content: center; align-items: center;">
+        </div>
+
+        <div>
+        </div>
+
+        <div>
+        </div>
+
+        <div>
+        </div>
+
+        <div>
+        </div>
+
+        <div>
+        </div>
+
+        <div>
+        </div>
+
+        <div>
+        </div>
+
+        <a ignore="1" class="ui-arrow-control ui-arrow-next-page"></a>
+        <a ignore="1" class="ui-arrow-control ui-arrow-previous-page"></a>
+      </div>
+    </div>
+
+
+    <!-- controls -->
+    <div id="controls">
+      <div class="all">
+        <div class="ui-slider" id="page-slider">
+          <div class="bar">
+            <div class="progress-width">
+              <div class="progress">
+                <div class="handler"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-options" id="options">
+          <a class="ui-icon" id="ui-icon-table-contents">
+            <i class="fa fa-bars"></i>
+          </a>
+          <a class="ui-icon show-hint" title="Miniatures" id="ui-icon-miniature">
+            <i class="fa fa-th"></i>
+          </a>
+          <a class="ui-icon" id="ui-icon-zoom">
+            <i class="fa fa-file-o"></i>
+          </a>
+          <a class="ui-icon show-hint" title="Share" id="ui-icon-share">
+            <i class="fa fa-share"></i>
+          </a>
+          <a class="ui-icon show-hint" title="Full Screen" id="ui-icon-full-screen">
+            <i class="fa fa-expand"></i>
+          </a>
+          <a class="ui-icon show-hint" id="ui-icon-toggle">
+            <i class="fa fa-ellipsis-h"></i>
+          </a>
+        </div>
+
+        <!-- zoom slider -->
+        <div id="zoom-slider-view" class="zoom-slider">
+          <div class="bg">
+            <div class="ui-slider" id="zoom-slider">
+              <div class="bar">
+                <div class="progress-width">
+                  <div class="progress">
+                    <div class="handler"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / zoom slider -->
+      </div>
+
+      <div id="ui-icon-expand-options">
+        <a class="ui-icon show-hint">
+          <i class="fa fa-ellipsis-h"></i>
+        </a>
+      </div>
+
+    </div>
+    <!-- / controls -->
+
+    <!-- miniatures -->
+    <div id="miniatures" class="ui-miniatures-slider">
+
+    </div>
+    <!-- / miniatures -->
+
+    <script type="text/javascript">
+      // Change these settings
+      // Flipbook settings with updated width and height
+      FlipbookSettings = {
+        options: {
+          width: 1320, // Width should be roughly double the page width
+          height: 920   // Keep height same or adjust as per your needs
+        },
+        shareMessage: 'Introducing turn.js 5 - HTML5 Library for Flipbooks.',
+        table: [
+          { text: 'THE COLUMBAN 2024-25', page: 1 },
+          { text: "Principal's Message", page: 2 },
+          { text: 'Awards', page: 4 },
+          { text: 'test', page: 6 },
+          { text: 'test', page: 8 },
+          { text: 'test', page: 12 }
+        ],
+        pageFolder: 'content/catalog/',
+
+        // Array of custom thumbnail paths
+        thumbnails: [
+          'assets/img/Thumb/thumb1.jpg', // Thumbnail for page 1
+          'assets/img/Thumb/thumb2.jpg', // Thumbnail for page 2
+          'assets/img/Thumb/thumb1.jpg', // Thumbnail for page 3
+          'assets/img/Thumb/thumb1.jpg', // Thumbnail for page 4
+          'assets/img/Thumb/thumb1.jpg', // Thumbnail for page 5
+          'assets/img/Thumb/thumb1.jpg', // Thumbnail for page 6
+          'assets/img/Thumb/thumb1.jpg', // Thumbnail for page 7
+          'assets/img/Thumb/thumb1.jpg', // Thumbnail for page 8
+          'assets/img/Thumb/thumb1.jpg', // Thumbnail for page 9
+          'assets/img/Thumb/thumb1.jpg', // Thumbnail for page 10
+          'assets/img/Thumb/thumb1.jpg', // Thumbnail for page 11
+        ]
+      };
+
+      const coverVideo = document.getElementById('coverPageVideo');
+      const principalVideo1 = document.getElementById('principal-video-1');
+      const principalVideo2 = document.getElementById('principal-video-2');
+
+      $('#flipbook').on('turning', function (event, page) {
+        if (page === 1) {
+          coverVideo.play();
+        } else {
+          coverVideo.pause();
+        }
+
+        if (page === 2) {
+          principalVideo1.play();
+        } else {
+          principalVideo1.pause();
+        }
+        if (page === 2) {
+          principalVideo2.play();
+        } else {
+          principalVideo2.pause();
+        }
+      });
+
+      document.getElementById('play-button').addEventListener('click', function () {
+        if (principalVideo1.paused) {
+          principalVideo1.play(); // Hide the play button when the video is playing
+          principalVideo2.play(); // Hide the play button when the video is playing
+        } else {
+          principalVideo1.pause(); // Show the play button when the video is paused
+          principalVideo2.pause(); // Show the play button when the video is paused
+        }
+      });
+
+    </script>
+
+</body>
+
+</html>
